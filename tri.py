@@ -1,32 +1,33 @@
 from operator import itemgetter, attrgetter
 
+class ligneInventaire:
+    """Classe representant une ligne d'un inventaire de vente 
+        Attribut attendus par le constructeur
+            -produit -- le nom du produit
+            -prix -- le prix du prodtuit
+            -quantite -- la quantite vendu du produit
 
-class Etudiants:
-    """Classe representant un etudiant.
     
-    On represente un etudiant par son :
-    -prenom
-    -age 
-    -moyenne entre [0-20]
     
     """
-    def __init__(self, nom, age, moyenne):
-        """Constructeur de Classe
-        """
-        self.nom = nom
-        self.age = age
-        self.moyenne= moyenne
+    def __init__(self, produit, prix, quantite):
+        self.produit = produit
+        self.prix = prix
+        self.quantite = quantite
+
+
     def __repr__(self):
-        """Affichage redifinition 
+        """Formatage de l'objet
         """
-        return "<Etudiant {} (age = {}, moyenne = {})>\n".format(self.nom, self.age, self.moyenne)
+        return "Ligne d'inventaire {} ({} X {})\n".format(self.produit, self.prix, self.quantite)
 
-etudiants = [
-    Etudiants("Clements", 14, 16),
-    Etudiants("Charles", 12, 15),
-    Etudiants("Oriane", 14, 18),
-    Etudiants("Thomas", 11, 12),
-    Etudiants("Damien", 12, 15)
+#Programme pricipal
+
+inventaire =[
+    ligneInventaire("Pomme rouge", 1.2, 19),
+    ligneInventaire("Orange", 1.4, 24),
+    ligneInventaire("Banane", 0.9, 21),
+    ligneInventaire("Poire", 1.2, 24)
 ]
-print(sorted(etudiants, key=attrgetter("moyenne", "age")))
 
+print(sorted(inventaire, key=attrgetter("prix", "quantite")))
